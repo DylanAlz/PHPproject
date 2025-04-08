@@ -9,7 +9,7 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Inicio</a></li>
+          <li><a href="{{ url('/') }}" >Home</a></li>
           {{-- <li class="dropdown"><a href="about.html"><span>About</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="team.html">Team</a></li>
@@ -25,13 +25,13 @@
               </li>
             </ul>
           </li> --}}
-          <li><a href="services.html">Departamentos</a></li>
-          <li><a href="portfolio.html">Ciudades</a></li>
+          <li><a href="{{ route('department.index') }}">Departments</a></li>
+          <li><a href="{{ route('city.index') }}">Cities</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="about.html">Comienza</a>
+      <a class="btn-getstarted" href="about.html">Get Started</a>
 
     </div>
   </header>
