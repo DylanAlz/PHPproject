@@ -11,10 +11,22 @@ use Illuminate\Support\Facades\Session;
 
 class CitiesController extends Controller
 {
-    public function index() {
-        $city = city::all();
+    public function index(Request $request) {
 
-        return view('city/index', [ 'city' => $city ]);
+        if (!empty($request->records_per_page)) {
+
+            $request->records_per_page = $request->records_per_page <= env('PAGINATION_MAX_SIZE') ? $request->records_per_page
+                                                                                                  : env('PAGINATION_MAX_SIZE');
+        } else {
+
+            $request->records_per_page = env('PAGINATION_DEFAULT_SIZE');
+
+        }
+
+        $city = city::where('name', 'LIKE', "%$request->filter%")
+                    ->paginate($request->records_per_page);
+
+        return view('city/index', [ 'city' => $city, 'data' => $request ]);
     }
 
     public function create() {
@@ -39,12 +51,12 @@ class CitiesController extends Controller
 
             $city->save();
 
-            Session::flash('message', ['content' => 'Ciudad creada con éxito.', 'type' => 'success']);
+            Session::flash('message', ['content' => 'City created succesfully.', 'type' => 'success']);
             return redirect()->action([CitiesController::class, 'index']);
 
         } catch (\Exception $ex) {
             Log::error($ex);
-            Session::flash('message', ['content' => 'Ha ocurrido un error.', 'type' => 'error']);
+            Session::flash('message', ['content' => 'There was an error.', 'type' => 'error']);
             return redirect()->back();
         }
     }

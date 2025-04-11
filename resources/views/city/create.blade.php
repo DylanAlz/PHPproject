@@ -2,10 +2,10 @@
 
 @section('content')
 
-    <section id="hero" class="hero section dark-background">
-        <div class="card">
-            <div class="card-header">
-                <h3>New City</h3>
+    <section id="hero" class="hero section">
+        <div class="card mx-5 my-5" style="background-color: #cccccc;">
+            <div class="card-header" style="background-color: #556270;">
+                <h3 style="color: white;">New City</h3>
             </div>
             <div class="card-body mt-3">
                 <form action="{{ route('city.store') }}" class="row g-3" method="POST">

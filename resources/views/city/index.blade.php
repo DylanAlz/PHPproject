@@ -2,12 +2,12 @@
 
 @section('content')
 
-    <section id="hero" class="hero section dark-background">
-        <div class="card">
-            <div class="card-header">
+    <section id="hero" class="hero section">
+        <div class="card mx-5 my-5" style="background-color: #cccccc;">
+            <div class="card-header" style="background-color: #556270;">
                 <class class="row">
                     <div class="col-md-11">
-                        <h3>Cities</h3>
+                        <h3 style="color: white;">Cities</h3>
                     </div>
                     <div class="col-md-1">
                         <a href="{{ route('city.create') }}" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i></a>
@@ -15,6 +15,43 @@
                 </class>
             </div>
             <div class="card-body">
+
+                <form action="{{ route('city.index') }}" class="navbar-search" method="GET">
+
+                    <div class="row mt-3">
+                        <div class="col md-auto">
+
+                            <select name="records_per_page" class="form-select bg-light border-0 small" value="{{ $data->records_per_page }}">
+                                <option value="2" {{ $data->records_per_page == 2 ? 'selected' : ''}}>2</option>
+                                <option value="10" {{ $data->records_per_page == 10 ? 'selected' : ''}}>10</option>
+                                <option value="15" {{ $data->records_per_page == 15 ? 'selected' : ''}}>15</option>
+                                <option value="30" {{ $data->records_per_page == 30 ? 'selected' : ''}}>30</option>
+                                <option value="50" {{ $data->records_per_page == 50 ? 'selected' : ''}}>50</option>
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-10">
+                            <div class="input-group-mb-3">
+                                <input type="text"
+                                       class="form-control bg-light border-0 small"
+                                       placeholder="Buscar..."
+                                       aria-label="seach"
+                                       name="filter"
+                                       value="{{ $data-> filter }}">
+                            </div>
+                        </div>
+
+                        <div class="col-md-auto">
+                            <div class="input-group-mb-3">
+                                <button class="btn btn-primary"><i class="bi bi-search"></i></button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -44,6 +81,9 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                {{ $city->appends(request()->except('page'))->links('components.customPagination') }}
+
             </div>
         </div>
     </section>
@@ -59,7 +99,7 @@
             event.preventDefault();
 
             Swal.fire({
-                title: "!Wait¡",
+                title: "!Hold on¡",
                 text: "¿Do you really want to delete the city?",
                 icon: "warning",
                 showCancelButton: true,

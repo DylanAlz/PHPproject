@@ -1,4 +1,4 @@
-<header id="header" class="header d-flex align-items-center sticky-top">
+<header id="header" class="header d-flex align-items-center sticky-top" style="background-color: #3b4654;">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
@@ -35,3 +35,13 @@
 
     </div>
   </header>
+
+  <style>
+    .navmenu a {
+        color: white;
+    }
+
+    .header .logo h1 {
+        color: white;
+    }
+  </style>
