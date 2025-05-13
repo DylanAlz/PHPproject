@@ -4,7 +4,8 @@ use App\Http\Controllers\DepartmentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/department', [DepartmentController::class, 'index'])
-    ->name('department.index');
+    ->name('department.index')
+    ->middleware('auth');
 
 Route::get('/department/create', [DepartmentController::class, 'create'])
     ->name('department.create');
