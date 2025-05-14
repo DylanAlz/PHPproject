@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Requests\Auth\LoginRequest;
 
 class AcoountController extends Controller
 {
@@ -14,9 +14,10 @@ class AcoountController extends Controller
         return view('auth/login');
     }
 
-    public function loginPost(Request $request) : RedirectResponse
+    public function loginPost(LoginRequest $request) : RedirectResponse
     {
-        $request->aunthentcate();
+        $request->authenticate();
+     
         $request->session()->regenerate();
         return redirect()->intended(route('home.index', absolute: false));
     }
