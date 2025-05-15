@@ -56,20 +56,20 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
+                            <th>Name</th>    
+                            <th>Department</th> 
                             <th></th>
                         </tr>
                     </thead>
 
                     <tbody>
                         @foreach ($city as $cit)
-
                             <tr>
                                 <td>{{ $cit->id }}</td>
                                 <td>{{ $cit->name }}</td>
+                                <td>{{ $cit->department->name ?? 'N/A' }}</td> <!-- Muestra el nombre del departamento -->
                                 <td>
                                     <a href="{{ route('city.edit', $cit->id) }}" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></a>
-
                                     <form action="{{ route('city.delete', $cit->id) }}" style="display: contents;" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -77,9 +77,9 @@
                                     </form>
                                 </td>
                             </tr>
-
                         @endforeach
                     </tbody>
+
                 </table>
 
                 {{ $city->appends(request()->except('page'))->links('components.customPagination') }}

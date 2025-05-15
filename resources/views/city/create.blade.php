@@ -10,14 +10,30 @@
             <div class="card-body mt-3">
                 <form action="{{ route('city.store') }}" class="row g-3" method="POST">
                     @csrf
-                    <div class="col-md12">
+
+                    {{-- Campo: nombre de la ciudad --}}
+                    <div class="col-md-12">
                         <div class="form-floating">
-                            <input type="text" class="form-control" placeholder="Write the city..." name="name">
+                            <input type="text" class="form-control" placeholder="Write the city..." name="name" required>
                             <label>City</label>
                         </div>
                     </div>
 
-                    <div class="text center">
+                    {{-- Campo: selección del departamento --}}
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            <select class="form-select" name="department_id" required>
+                                <option value="" disabled selected>Select a department</option>
+                                @foreach ($departments as $department)
+                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                @endforeach
+                            </select>
+                            <label>Department</label>
+                        </div>
+                    </div>
+
+                    {{-- Botones --}}
+                    <div class="text-center">
                         <button type="submit" class="btn btn-primary">Save</button>
                         <a href="{{ route('city.index') }}" class="btn btn-secondary">Go back</a>
                     </div>

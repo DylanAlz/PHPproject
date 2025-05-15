@@ -10,9 +10,13 @@
           <div class="carousel-item active">
             <img src="assets/img/hero-carousel/hero-carousel-1.jpg" alt="">
             <div class="carousel-container">
-              <h2>Welcome to CINEMA<br></h2>
+              @if(!Auth::check())
+              <h2>¡Welcome to CINEMA guest!<br></h2>
+              @else
+              <h2>¡Welcome to CINEMA {{ Auth::user()->full_name }}!<br></h2>
+              @endif
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <a href="#featured-services" class="btn-get-started">Get Started</a>
+              <a href="login" class="btn-get-started">Login</a>
             </div>
           </div><!-- End Carousel Item -->
 
@@ -21,7 +25,7 @@
             <div class="carousel-container">
               <h2>Find yout favorite movies</h2>
               <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut.</p>
-              <a href="#featured-services" class="btn-get-started">Get Started</a>
+              <a href="#featured-services" class="btn-get-started">Login</a>
             </div>
           </div><!-- End Carousel Item -->
 
