@@ -27,6 +27,9 @@
           </li> --}}
         <li><a href="{{ route('department.index') }}">Departments</a></li>
         <li><a href="{{ route('city.index') }}">Cities</a></li>
+        <li><a href="{{ route('role.index') }}">Roles</a></li>
+        <li><a href="{{ route('permission.index') }}">Permission</a></li>
+        <li><a href="{{ route('rolepermissions.index') }}">Asignar roles</a></li>
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
