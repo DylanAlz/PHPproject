@@ -25,8 +25,17 @@
               </li>
             </ul>
           </li> --}}
-        <li><a href="{{ route('department.index') }}">Departments</a></li>
-        <li><a href="{{ route('city.index') }}">Cities</a></li>
+            @if (\App\Helpers\RoleHelper::isAuthorized('department.showDepartments'))
+
+                <li><a href="{{ route('department.index') }}">Departments</a></li>
+
+            @endif
+
+            @if (\App\Helpers\RoleHelper::isAuthorized('city.showCities'))
+
+                <li><a href="{{ route('city.index') }}">Cities</a></li>
+
+            @endif
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
