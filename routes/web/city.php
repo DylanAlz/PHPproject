@@ -4,7 +4,8 @@ use App\Http\Controllers\CitiesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/city', [CitiesController::class, 'index'])
-    ->name('city.index');
+    ->name('city.index')
+    ->middleware('auth');
 
 Route::get('/city/create', [CitiesController::class, 'create'])
     ->name('city.create');

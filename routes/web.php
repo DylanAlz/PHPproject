@@ -25,3 +25,5 @@ require __DIR__.'/auth.php';
 include('web/department.php');
 
 include('web/city.php');
+include('web/role.php');
+include('web/permission.php');
