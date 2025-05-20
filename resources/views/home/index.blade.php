@@ -8,28 +8,30 @@
         <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
           <div class="carousel-item active">
-            <img src="assets/img/hero-carousel/hero-carousel-1.jpg" alt="">
+            <img src="{{ asset('assets/img/cine.jpg') }}" alt="">
             <div class="carousel-container">
               <h2>Welcome to CINEMA<br></h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p>At Cinema Sample, we are passionate about bringing you the best cinematic experience.
+Our commitment is to offer high-quality screenings, comfortable facilities, and exceptional customer service.</p>
               <a href="#featured-services" class="btn-get-started">Get Started</a>
             </div>
           </div><!-- End Carousel Item -->
 
           <div class="carousel-item">
-            <img src="assets/img/hero-carousel/hero-carousel-2.jpg" alt="">
+            <img src="{{ asset('assets/img/cine.jpg') }}" alt="">
             <div class="carousel-container">
-              <h2>Find yout favorite movies</h2>
-              <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut.</p>
+              <h2>Find Your Favorite Movies</h2>
+              <p>In every screening, we aim to connect emotions, stories, and unforgettable moments.
+Whether you're coming alone, with a partner, or with your family, you'll always find a movie for you at our cinema.</p>
               <a href="#featured-services" class="btn-get-started">Get Started</a>
             </div>
           </div><!-- End Carousel Item -->
 
           <div class="carousel-item">
-            <img src="assets/img/hero-carousel/hero-carousel-3.jpg" alt="">
+            <img src="{{ asset('assets/img/cine.jpg') }}" alt="">
             <div class="carousel-container">
-              <h2>Temporibus autem quibusdam</h2>
-              <p>Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt omnis iste natus error sit voluptatem accusantium.</p>
+              <h2>Flexible Showtimes</h2>
+              <p>We offer a wide range of showtimes so you can enjoy our listings at the time that best fits your daily schedule.</p>
               <a href="#featured-services" class="btn-get-started">Get Started</a>
             </div>
           </div><!-- End Carousel Item -->
@@ -53,8 +55,8 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-          <h2>About</h2>
-          <p>About Us<br></p>
+          <h2>CINEMA</h2>
+          <p>About us<br></p>
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -63,19 +65,21 @@
 
             <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+                At Cinema, we are passionate about delivering the best cinematic experience.
+Our commitment is to offer high-quality screenings, comfortable facilities, and exceptional customer service.
               </p>
               <ul>
-                <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-                <li><i class="bi bi-check2-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-                <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo</span></li>
+                <li><i class="bi bi-check2-circle"></i> <span>We strive to always offer a varied and up-to-date schedule.</span></li>
+                <li><i class="bi bi-check2-circle"></i> <span>We have modern theaters, surround sound, and the best image quality.</span></li>
+                <li><i class="bi bi-check2-circle"></i> <span>Our team is ready to make your visit an unforgettable experience.</span></li>
               </ul>
             </div>
 
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-              <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-              <a href="about.html" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+              <p>In every screening, we aim to connect emotions, stories, and unique moments.
+Whether you come alone, with a partner, or with your family, you'll always find a movie for you at our cinema.
+</p>
+              <a href="about.html" class="read-more"><span>Read more</span><i class="bi bi-arrow-right"></i></a>
             </div>
 
           </div>
@@ -84,7 +88,7 @@
 
       </section><!-- /About Section -->
 
-      <!-- Clients Section -->
+      {{-- <!-- Clients Section -->
       <section id="clients" class="clients section light-background">
 
         <div class="container" data-aos="fade-up">
@@ -312,6 +316,6 @@
 
         </div>
 
-      </section>
+      </section> --}}
 
 @endsection
