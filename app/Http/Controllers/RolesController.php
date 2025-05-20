@@ -80,7 +80,7 @@ class RolesController extends Controller
             if (!empty($rolePermission)){
 
                 $item->selected=true;
-            }
+            }return $item;
 
         });
 
@@ -185,7 +185,7 @@ class RolesController extends Controller
         Validator::make($request->all() ,
         [
             'role_id'=>'required|exists:roles,id',
-            'name'=>'required|max64',
+            'name'=>'required|max:64',
             'permissions'=>'required|json',
             // 'city'=>'required|json',
 
