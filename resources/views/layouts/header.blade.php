@@ -27,6 +27,8 @@
           </li> --}}
         <li><a href="{{ route('department.index') }}">Departments</a></li>
         <li><a href="{{ route('city.index') }}">Cities</a></li>
+        <li><a href="{{ route('show.index') }}">Show</a></li>
+        <li><a href="{{ route('genre.index') }}">Genre</a></li>
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>
