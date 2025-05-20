@@ -36,6 +36,11 @@
                 <li><a href="{{ route('city.index') }}">Cities</a></li>
 
             @endif
+
+            @if (\App\Helpers\RoleHelper::isAuthorized('city.showCities'))
+
+                <li><a href="{{ route('roles.index') }}">Roles</a></li>
+            @endif
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>

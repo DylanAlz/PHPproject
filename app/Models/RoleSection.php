@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class RoleSection extends Model
 {
-    protected $table = 'role_permissions';
+    protected $table = 'role_sections';
     protected $primaryKey = ['role_id', 'section_id'];
     public $incrementing = false;
     public $dates = ['created_at', 'updated_at'];
