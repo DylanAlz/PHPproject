@@ -58,9 +58,10 @@ class RolesController extends Controller
 
     public function edit($id){
 
-        $role=Role::find($id);
+        $roles=Role::find($id);
 
-        if(empty($role)){
+        // dd($id);
+        if(empty($roles)){
 
             Session::flash('message',['content'=>"El rol con ID '$id' no existe.",'type'=>'error']);
             return redirect()->back();
@@ -84,32 +85,31 @@ class RolesController extends Controller
         });
 
 
-        $city=city::all();
+        // $city=city::all();
 
-        $city=$city->map(function($item) use($id){
+        // $city=$city->map(function($item) use($id){
 
-            $item->selected=false;
+        //     $item->selected=false;
 
-            $roleCity=RoleSection::where('city_id','=',$item->id)
-                                            ->where('role_id','=', $id)
-                                            ->first();
+        //     $roleCity=RoleSection::where('city_id','=',$item->id)
+        //                                     ->where('role_id','=', $id)
+        //                                     ->first();
 
-            if (!empty($roleCity)){
+        //     if (!empty($roleCity)){
 
-                $item->selected=true;
-            }
+        //         $item->selected=true;
+        //     }
 
-        });
+        // });
 
 
         $modules = $permissions->groupBy('module');
 
-        $cityGroups = $city->chunk(5);
+        // $cityGroups = $city->chunk(5);
 
         return view('roles/edit',[
-            'role'=>$role,
-            'modules'=>$modules,
-            'cityGroups'=>$cityGroups
+            'roles'=>$roles,
+            'modules'=>$modules
         ]);
     }
 
