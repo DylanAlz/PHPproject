@@ -33,7 +33,7 @@ class UserRoleSeeder extends Seeder
             foreach ($cityPermissions as $permission) {
                 $rolePermission = new RolePermission();
                 $rolePermission->role_id = $sellerRole->id;
-                $rolePermission->permission_id = $permission->id; 
+                $rolePermission->permission_id = $permission->id;
                 $rolePermission->save();
             }
 
@@ -44,11 +44,11 @@ class UserRoleSeeder extends Seeder
 
             $userPermissions = Permission::where('module', '=', 'departament')
                                     ->get();
-                                    
+
             foreach ($userPermissions as $permission) {
                 $rolePermission = new RolePermission();
                 $rolePermission->role_id = $userManagerRole->id;
-                $rolePermission->permission_id = $permission->id; 
+                $rolePermission->permission_id = $permission->id;
                 $rolePermission->save();
             }
 
@@ -80,6 +80,16 @@ class UserRoleSeeder extends Seeder
         $user->email = 'cristiandavid@gmail.com';
         $user->email_verified_at = now();
         $user->password = Hash::make('87654321');
+        $user->role_id = $userManagerRole->id;
+        $user->save();
+
+        $user = new User();
+        $user->first_name = 'Dilson';
+        $user->last_name = 'Garcia';
+        $user->document = '1007872888';
+        $user->email = 'dilsongarcia@gmail.com';
+        $user->email_verified_at = now();
+        $user->password = Hash::make('0987654321');
         $user->role_id = $userManagerRole->id;
         $user->save();
     }

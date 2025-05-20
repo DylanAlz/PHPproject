@@ -16,16 +16,22 @@ class PermissionsSeeder extends Seeder
         $permissions = [
 
             // City
-            ['name' => 'showCity', 'description' => 'Ver ciudades', 'module' => 'city'],
-            ['name' => 'createCity', 'description' => 'Crear ciudad', 'module' => 'city'],
-            ['name' => 'updateCity', 'description' => 'Actualizar ciudad', 'module' => 'city'],
-            ['name' => 'deleteCity', 'description' => 'Borrar ciudad', 'module' => 'city'],
+            ['name' => 'showCity', 'description' => 'Ver Ciudades', 'module' => 'city'],
+            ['name' => 'createCity', 'description' => 'Crear Ciudad', 'module' => 'city'],
+            ['name' => 'updateCity', 'description' => 'Actualizar Ciudad', 'module' => 'city'],
+            ['name' => 'deleteCity', 'description' => 'Borrar Ciudad', 'module' => 'city'],
 
-            // Department        
-            ['name' => 'showDepartament', 'description' => 'Ver departamentos', 'module' => 'departament'],
+            // Department
+            ['name' => 'showDepartament', 'description' => 'Ver Departamentos', 'module' => 'departament'],
             ['name' => 'createDepartament', 'description' => 'Crear Departamento', 'module' => 'departament'],
             ['name' => 'updateDepartament', 'description' => 'Actualizar Departamento', 'module' => 'departament'],
             ['name' => 'deleteDepartament', 'description' => 'Borrar Departamento', 'module' => 'departament'],
+
+            // Roles
+            ['name' => 'showRoles', 'description' => 'Ver Roles', 'module' => 'Roles'],
+            ['name' => 'createRoles', 'description' => 'Crear Roles', 'module' => 'Roles'],
+            ['name' => 'updateRoles', 'description' => 'Actualizar Roles', 'module' => 'Roles'],
+            ['name' => 'deleteRoles', 'description' => 'Borrar Roles', 'module' => 'Roles'],
 
         ];
         foreach ($permissions as $permission) {
