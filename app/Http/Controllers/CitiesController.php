@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\city;
+use App\Models\department;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -23,24 +23,28 @@ class CitiesController extends Controller
 
         }
 
-        $city = city::where('name', 'LIKE', "%$request->filter%")
-                    ->paginate($request->records_per_page);
+        $city = city::with('department')
+            ->where('name', 'LIKE', "%$request->filter%")
+            ->paginate($request->records_per_page);
 
         return view('city/index', [ 'city' => $city, 'data' => $request ]);
     }
 
     public function create() {
 
-        return view('city/create');
+        $departments = department::all();
+        return view('city/create', compact('departments'));
     }
 
     public function store(Request $request) {
 
         Validator::make($request->all(), [
-            'name' => 'required|max:100'
+            'name' => 'required|max:100',
+            'department_id' => 'required|exists:departments,id',
         ], [
             'name.required' => 'The name is required.',
-            'name.max' => 'The name cannot surpass :max characters.'
+            'department_id.required' => 'The department is required.',
+            'department_id.exists' => 'The selected department does not exist.',
         ])->validate();
 
         try {
@@ -49,7 +53,10 @@ class CitiesController extends Controller
 
             $city->name = $request->name;
 
+            $city->department_id = $request->department_id;
+
             $city->save();
+            
 
             Session::flash('message', ['content' => 'City created succesfully.', 'type' => 'success']);
             return redirect()->action([CitiesController::class, 'index']);
@@ -64,6 +71,7 @@ class CitiesController extends Controller
     public function edit($id) {
 
         $city = City::find($id);
+        $departments = Department::all();
 
         if (empty($city)) {
 
@@ -71,17 +79,18 @@ class CitiesController extends Controller
             return redirect()->back();
 
         }
-        return view('city/edit', ['city' => $city]);
+        return view('city/edit', ['city' => $city, 'departments' => $departments]);
     }
 
     public function update(Request $request) {
 
         Validator::make($request->all(), [
             'name' => 'required|max:100',
-            'city_id' => 'required|exists:cities,id',
+            'department_id' => 'required|exists:departments,id',
         ], [
             'name.required' => 'The name is required.',
-            'name.max' => 'The name cannot surpass :max characters.'
+            'department_id.required' => 'The department is required.',
+            'department_id.exists' => 'The selected department does not exist.',
         ])->validate();
 
         try {
@@ -89,6 +98,8 @@ class CitiesController extends Controller
             $city = City::find($request->city_id);
 
             $city->name = $request->name;
+
+            $city->department_id = $request->department_id;
 
             $city->save();
 

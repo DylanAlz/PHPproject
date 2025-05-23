@@ -27,23 +27,49 @@
               </li>
             </ul>
           </li> --}}
-          <li><a href="{{ route('department.index') }}">Departments</a></li>
-          <li><a href="{{ route('city.index') }}">Cities</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+            @if (\App\Helpers\RoleHelper::isAuthorized('department.showDepartments'))
 
-      <a class="btn-getstarted" href="about.html">Get Started</a>
+                <li><a href="{{ route('department.index') }}">Departments</a></li>
 
-    </div>
-  </header>
+            @endif
 
-  <style>
-    .navmenu a {
-        color: white;
-    }
+            @if (\App\Helpers\RoleHelper::isAuthorized('city.showCities'))
 
-    .header .logo h1 {
-        color: white;
-    }
-  </style>
+                <li><a href="{{ route('city.index') }}">Cities</a></li>
+
+            @endif
+
+            @if (\App\Helpers\RoleHelper::isAuthorized('city.showCities'))
+
+                <li><a href="{{ route('roles.index') }}">Roles</a></li>
+            @endif
+      </ul>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav>
+
+    @if(!Auth::check())
+    <a class="btn-getstarted" href="{{ route('login') }}">Login</a>
+    @else
+    <li>
+      <form method="POST" action="{{ route('logout') }}" style="display: contents;">
+        @csrf
+        <button type="submit" class="btn btn-outline-danger">Logout
+          <i class="bi bi-box-arrow-right"></i>
+        </button>
+
+
+      </form>
+    </li>
+    @endif
+  </div>
+</header>
+
+<style>
+  .navmenu a {
+    color: white;
+  }
+
+  .header .logo h1 {
+    color: white;
+  }
+</style>

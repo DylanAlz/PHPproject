@@ -10,20 +10,24 @@
           <div class="carousel-item active">
             <img src="{{ asset('assets/img/cine.jpg') }}" alt="">
             <div class="carousel-container">
-              <h2>Welcome to CINEMA<br></h2>
+              @if(!Auth::check())
+              <h2>¡Welcome to CINEMA guest!<br></h2>
+              @else
+              <h2>¡Welcome to CINEMA {{ Auth::user()->full_name }}!<br></h2>
+              @endif
               <p>At Cinema Sample, we are passionate about bringing you the best cinematic experience.
 Our commitment is to offer high-quality screenings, comfortable facilities, and exceptional customer service.</p>
-              <a href="#featured-services" class="btn-get-started">Get Started</a>
+              <a href="login" class="btn-get-started">Login</a>
             </div>
           </div><!-- End Carousel Item -->
 
           <div class="carousel-item">
             <img src="{{ asset('assets/img/cine.jpg') }}" alt="">
             <div class="carousel-container">
-              <h2>Find Your Favorite Movies</h2>
+              <h2>Find yout favorite movies</h2>
               <p>In every screening, we aim to connect emotions, stories, and unforgettable moments.
 Whether you're coming alone, with a partner, or with your family, you'll always find a movie for you at our cinema.</p>
-              <a href="#featured-services" class="btn-get-started">Get Started</a>
+              <a href="login" class="btn-get-started">Login</a>
             </div>
           </div><!-- End Carousel Item -->
 
@@ -32,7 +36,7 @@ Whether you're coming alone, with a partner, or with your family, you'll always 
             <div class="carousel-container">
               <h2>Flexible Showtimes</h2>
               <p>We offer a wide range of showtimes so you can enjoy our listings at the time that best fits your daily schedule.</p>
-              <a href="#featured-services" class="btn-get-started">Get Started</a>
+              <a href="login" class="btn-get-started">Login</a>
             </div>
           </div><!-- End Carousel Item -->
 
