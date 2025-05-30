@@ -29,3 +29,5 @@ include('web/department.php');
 include('web/city.php');
 
 include('web/roles.php');
+
+include('web/genre.php');

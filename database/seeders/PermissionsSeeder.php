@@ -33,6 +33,13 @@ class PermissionsSeeder extends Seeder
             ['name' => 'updateRoles', 'description' => 'Actualizar Roles', 'module' => 'Roles'],
             ['name' => 'deleteRoles', 'description' => 'Borrar Roles', 'module' => 'Roles'],
 
+            //Genre
+            ['name' => 'showGenre', 'description' => 'Ver Géneros', 'module' => 'genre'],
+            ['name' => 'createGenre', 'description' => 'Crear Género', 'module' => 'genre'],
+            ['name' => 'updateGenre', 'description' => 'Actualizar Género', 'module' => 'genre'],
+            ['name' => 'deleteGenre', 'description' => 'Borrar Género', 'module' => 'genre'],
+
+
         ];
         foreach ($permissions as $permission) {
             $tmpPermission = Permission::where('name', '=', $permission['name'])

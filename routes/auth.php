@@ -24,4 +24,19 @@ Route::middleware('auth')->group(function () {
  
     Route::post('logout', [AcoountController::class, 'logout'])
         ->name('logout');
+
+    Route::get('/profile/edit', [AcoountController::class, 'edit'])
+        ->name('profile.edit');
+
+    Route::put('/profile/update', [AcoountController::class, 'update'])
+        ->name('profile.update');
+
+    Route::get('/profile/change-password', [AcoountController::class, 'changePassword'])
+        ->name('profile.changePassword');
+    
+    Route::patch('/profile/update-password', [AcoountController::class, 'updatePassword'])
+        ->name('profile.updatePassword');
 });
+
+
+
