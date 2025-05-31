@@ -144,7 +144,7 @@ class AcoountController extends Controller
             );
 
             if ($status == Password::RESET_LINK_SENT) {
-                Session::flash('message', ['content' => 'There link was sent to your email', 'type' => 'success']);
+                Session::flash('message', ['content' => 'The link was sent to your email', 'type' => 'success']);
                 return redirect()->route('login');
             }
 
