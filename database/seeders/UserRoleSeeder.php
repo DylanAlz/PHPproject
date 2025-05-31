@@ -27,6 +27,16 @@ class UserRoleSeeder extends Seeder
             $sellerRole->name = 'Vendedor';
             $sellerRole->save();
 
+            $genrePermissions = Permission::where('module', '=', 'genre')->get();
+            foreach ($genrePermissions as $permission) {
+                $rolePermission = new RolePermission();
+                $rolePermission->role_id = $adminRole->id;
+                $rolePermission->permission_id = $permission->id;
+                $rolePermission->save();
+            }
+
+
+
             $cityPermissions = Permission::where('module', '=', 'city')
                                     ->get();
 

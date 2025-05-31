@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/city', [CitiesController::class, 'index'])
     ->name('city.index')
     ->middleware(AuthorizeMiddleware::class . ':city.showCity');
-
+    
 Route::get('/city/create', [CitiesController::class, 'create'])
     ->name('city.create')
     ->middleware(AuthorizeMiddleware::class . ':city.createCity');

@@ -9,9 +9,10 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
+          <li><a href="{{ route('profile.edit') }}">My Profile</a></li>
           <li><a href="{{ url('/') }}" >Home</a></li>
           <li><a href="{{ url('/cartelera') }}" >Movies</a></li>
-
+          
           {{-- <li class="dropdown"><a href="about.html"><span>About</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="team.html">Team</a></li>
@@ -38,6 +39,11 @@
                 <li><a href="{{ route('city.index') }}">Cities</a></li>
 
             @endif
+
+            @if (\App\Helpers\RoleHelper::isAuthorized('genre.showGenres'))
+                <li><a href="{{ route('genre.index') }}">Gender</a></li>
+            @endif
+
 
             @if (\App\Helpers\RoleHelper::isAuthorized('city.showCities'))
 
