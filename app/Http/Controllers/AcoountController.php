@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
+
 
 
 class AcoountController extends Controller
@@ -116,5 +119,97 @@ class AcoountController extends Controller
             return redirect()->back();
         }
 
+    }
+
+    public function forgotPassword()
+    {
+        return view('auth/forgotPassword');
+    }
+
+    public function recoveryPassword(Request $request)
+    {
+        Validator::make($request->all(), [
+            'email' => 'required|email',
+        ],
+        [
+            'email.required' => 'The email is required.',
+            'email.email' => 'The email must be a valid email address.',
+        ])->validate();
+
+        // Logic for sending password reset link goes here
+        try {
+            
+            $status = \Password::sendResetLink(
+                $request->only('email')
+            );
+
+            if ($status == Password::RESET_LINK_SENT) {
+                Session::flash('message', ['content' => 'There link was sent to your email', 'type' => 'success']);
+                return redirect()->route('login');
+            }
+
+            if ($status == Password::RESET_THROTTLED) {
+                Session::flash('message', ['content' => 'You have requested a password reset too many times. Please try again later.', 'type' => 'error']);
+                return redirect()->back();
+            }
+
+            Session::flash('message', ['content' => $status, 'type' => 'error']);
+                return redirect()->back();
+            
+        } catch (\Exception $e) {
+            Log::error($e);
+            Session::flash('message', ['content' => 'There was an error sending the password reset link.', 'type' => 'error']);
+            return redirect()->back();
+        }
+    }
+
+    public function resetPassword(Request $request, $token)
+    {
+       return view('auth/resetPassword', ['token' => $token , 'email' => $request->email]); 
+    }
+
+    public function resetPasswordPost(Request $request)
+    {
+        Validator::make($request->all(), [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed',
+            
+        ],
+        [
+            'token.required' => 'The token is required.',
+            'email.required' => 'The email is required.',
+            'email.email' => 'The email must be a valid email address.',
+            'password.required' => 'The new password is required.',
+            'password.confirmed' => 'The password not match.',
+        ])->validate();
+
+        try{
+            $status = \Password::reset(
+                $request->only('email', 'password', 'password_confirmation', 'token'),
+                function ($user, $password) {
+                    $user->forceFill([
+                        'password' => Hash::make($password),
+                        'remember_token' => Str::random(60)
+                    ])->save();
+                }
+            );
+
+            if ($status == Password::PASSWORD_RESET) {
+                Session::flash('message', ['content' => 'Password reset successfully.', 'type' => 'success']);
+                return redirect()->route('login');
+            }
+
+            Session::flash('message', ['content' => $status, 'type' => 'error']);
+            return redirect()->back();
+
+        } catch (\Exception $e) {
+            Log::error($e);
+            Session::flash('message', ['content' => 'There was an error resetting the password.', 'type' => 'error']);
+            return redirect()->back();
+        }
+
+        
+        
     }
 }

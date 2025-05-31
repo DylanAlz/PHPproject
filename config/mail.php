@@ -95,6 +95,10 @@ return [
             ],
         ],
 
+        'mailtrap' => [
+                'transport' => 'mailtrap-sdk'
+            ],
+
     ],
 
     /*
