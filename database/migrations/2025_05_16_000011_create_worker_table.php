@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -14,7 +15,7 @@ return new class extends Migration
         Schema::create('worker', function (Blueprint $table) {
             $table->integer('worker_id')->primary();
             $table->string('name', 25);
-            $table->date('entry_date')->default(DB::raw('CURRENT_DATE'));
+            $table->date('entry_date')->nullable();
             $table->integer('salary');
             $table->integer('type_doc_id')->nullable();
             $table->integer('role_id')->nullable();
