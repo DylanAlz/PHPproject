@@ -18,10 +18,37 @@ Route::middleware('guest')->group(function () {
 
     Route::post('login', [AcoountController::class, 'loginPost']);
 
+    Route::get('/forgot-password', [AcoountController::class, 'forgotPassword'])
+        ->name('forgotPassword');
+    
+    Route::post('/recovery-password', [AcoountController::class, 'recoveryPassword'])
+        ->name('recoveryPassword');
+
+    Route::get('/reset-password{token}', [AcoountController::class, 'resetPassword'])
+        ->name('password.reset');
+    
+    Route::post('/reset-password', [AcoountController::class, 'resetPasswordPost'])
+        ->name('password.update');
+
 });
 
 Route::middleware('auth')->group(function () {
  
     Route::post('logout', [AcoountController::class, 'logout'])
         ->name('logout');
+
+    Route::get('/profile/edit', [AcoountController::class, 'edit'])
+        ->name('profile.edit');
+
+    Route::put('/profile/update', [AcoountController::class, 'update'])
+        ->name('profile.update');
+
+    Route::get('/profile/change-password', [AcoountController::class, 'changePassword'])
+        ->name('profile.changePassword');
+    
+    Route::patch('/profile/update-password', [AcoountController::class, 'updatePassword'])
+        ->name('profile.updatePassword');
 });
+
+
+

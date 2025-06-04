@@ -8,6 +8,9 @@
         return view('home/index');
     })->name('home.index');
 
+Route::get('/cartelera', function () {
+    return view('cinema/cartelera');
+});
 
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -19,7 +22,7 @@
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
-    require __DIR__.'/auth.php';
+require __DIR__.'/auth.php';
 
 
     include('web/department.php');
@@ -27,3 +30,5 @@
     include('web/city.php');
 
     include('web/roles.php');
+
+include('web/genre.php');
