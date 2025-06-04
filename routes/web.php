@@ -32,3 +32,5 @@ require __DIR__.'/auth.php';
     include('web/roles.php');
 
 include('web/genre.php');
+
+include('web/employee.php');
